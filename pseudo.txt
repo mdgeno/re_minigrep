@@ -1,0 +1,31 @@
+-bring in the env module in order to take command line arguments via the args function, the function returns a an Args Struct which is an iterator, therefore use the collect method to gather make use of the values.
+-test what the output will be via debug macro, create a variable which is a Vec of Strings. the path of the executable is usually the first element it returns. try also with multiple arguments.
+-to make the output appear more organised, try to place the arguments in a variable and output with a println macro; 
+	'Searching for (2nd index)'
+	'File Path (3rd index)'
+
+-program a file reader feature, bring in the fs module.
+-output the file path to confirm via println!
+-create a varialble to capture the contents of the file via the read_to_string function (returns a Result enum), and handle the error accordingly.
+-then output the contents variable via the println macro.
+
+-create a functionality that takes the responsibility of assigning values from arguments taken from the command line. Do this by making a funciton that takes the argument variable which is the vector of Strings, then assigns the values accordingly to the correct index.
+
+-refactor the main function by reducing and organising the variables. create a Struct which takes the responsibilty of producing the query and file_path by establishing them as fields. Call the fields accordingly.
+-refactor the parse_config function where instead of returning a double tuple of string slices, it reaturns a Struct which contains the query and file_path fields.  
+
+-reorganize the parse_config function, to make it directly related to the Config struct and have the same concept as standard library Structs with new() functions. 
+-create an implementation block for the Config Struct
+-transfer the parse_config function into the implementation block, and change it's name to new.
+-run and make it sure it outputs the same results as previous.
+
+-add a functionality to the new function of the Config Struct where it checks weather the argument(which is the parameter) has a length of atleast 3(0-path, 1-query, 2-file_path), then display a message via panic macro 'not enough arguments'. this way, users will understand when there has been an error in the input of the command line.
+-check if the result is similar to the ex after listing 12-8
+
+-rename the new function to build.
+-refactor the build function by returning a result with a Config instance for Ok variants.
+-instead of calling panic macro, return an Err variant which has a string slice with a static lifetime type and display the message 'not enough arguments'
+-the main will need to recognise the output of the build function, capture the values if the variant is Ok, otherwise diaplay Err variant value and exit the program.
+-in order to exit the program, bring in the process module. After displaying the value of the Err variant, perform the exit function with code 1 as parameter.
+
+-CONT. Extracting Logic from main
