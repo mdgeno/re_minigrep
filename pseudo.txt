@@ -28,4 +28,7 @@
 -the main will need to recognise the output of the build function, capture the values if the variant is Ok, otherwise diaplay Err variant value and exit the program.
 -in order to exit the program, bring in the process module. After displaying the value of the Err variant, perform the exit function with code 1 as parameter.
 
--CONT. Extracting Logic from main
+-create a run function, it's purpose is to extract and segregate the file reader logic from main. It should take a Config type parameter and with that read the file path variant and output it's values via println macro.
+-test if the program still works as it should.
+
+-CONT. Returning Errors from run
