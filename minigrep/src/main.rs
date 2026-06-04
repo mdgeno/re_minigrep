@@ -15,10 +15,13 @@ fn main(){
 	println!("Searching for {}", config_args.query);
 	println!("In file {}", config_args.file_path);
 
-	let contents = fs::read_to_string(config_args.file_path).expect("error reading file");
+	run(config_args);
+}
+
+fn run(config: Config){
+	let contents = fs::read_to_string(config.file_path).expect("should have been able to read the file");
 
 	println!("{contents}");
-
 }
 
 struct Config{
