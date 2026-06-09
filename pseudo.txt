@@ -34,4 +34,10 @@
 -refactor the run function, where it returns a result instead of executing a panic macro via expect. 
 -handle the error of the run function in the main.
 
--CONT. Splitting Code into a Library Crate 
+-create a library crate.
+-import the minigrep lib folder to minigrep Cargo toml.
+-implement a search function that the main fn of the binary crate root file can use.
+	-the search function should be able to take a query and contents which are of string slice types and return a vector of string slices. Be mindful of it's lifetime annotation as it has more than 2 string slices.
+	-let the code block execute only the unimplemented! for now.
+
+-CONT. Adding Functionality..

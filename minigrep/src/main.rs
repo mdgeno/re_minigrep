@@ -2,6 +2,7 @@ use std::env;
 use std::fs;
 use std::process;
 use std::error;
+use minigrep_lib::search;
 
 fn main(){
 
@@ -24,7 +25,9 @@ fn main(){
 
 fn run(config: Config) -> Result<(), Box<dyn error::Error>>{
 	match fs::read_to_string(config.file_path){
-			Ok(val) => println!("{val}"),
+			Ok(val) => for line in search(&config.query, &val){
+					println!("{line}")
+				   },
 			Err(e) => println!("{e}")
 	};	
 
