@@ -45,4 +45,10 @@
 	-create variables for the parameters required bu the search function
 	-assert equal macro your desired result.
 
-CONT. Writing Code to Pass the TesT
+CONT. 
+-we need to make the search function pass
+	-implement a code where you create a vector of string slices varialble which will be used as value returned by this search function.
+	-iterate over the contents parameter, and check each line if it contains the query parameter. if so, add the particular line that contains the query to the initially created vector variable. otherwise do nothing.
+	-return the vector.
+
+
