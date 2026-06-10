@@ -40,4 +40,9 @@
 	-the search function should be able to take a query and contents which are of string slice types and return a vector of string slices. Be mindful of it's lifetime annotation as it has more than 2 string slices.
 	-let the code block execute only the unimplemented! for now.
 
--CONT. Adding Functionality..
+-write a test(a failing test) function in the test mod of the library crate root file.
+	-the test should be use the search function of the lib crate root file
+	-create variables for the parameters required bu the search function
+	-assert equal macro your desired result.
+
+CONT. Writing Code to Pass the TesT
