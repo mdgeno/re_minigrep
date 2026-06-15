@@ -50,4 +50,18 @@
 	-iterate over the contents parameter, and check each line if it contains the query parameter. if so, add the particular line that contains the query to the initially created vector variable. otherwise do nothing.
 	-return the vector.
 
-CONT. Working with Environment Variables
+-create 2 new functionalities that allows to search for case sensitive and case insensitive searches.
+	-following the tdd concept, create 2 failing tests for both feature requests.
+		-the concept is the same as the search test function, modify the contents value, and add 'Duct tape' for case sensitive and 'Trust me' for case insensitive. the query parameter for case sensitive 'duct' and case insensitive 'rUsT'
+	-create 2 skeleton functions in the main root of the library crate.
+	  
+-implement the search case insensitive function.
+	-in order to make this work, lowercase both the query and each line of the contents, then check if each line contains the query.
+
+-implement the ignore case feature
+	-create an ignore case field for the Config struct
+	-refactor the run function where in you create a results variable which is put through a match control flow construct, having the config ignore case field as the expression, when the match arm is true, it performs the search case insensitive funciton. Otherwise, it executes the case sensitive search function.
+	-then output the result variable.
+	
+	-refactor the build function in the implementation block of the Config struct, by adding a variable for the ignore case field. The value should be a boolean extracted via the is_ok function, which takes the return value of var function of the env module with the parameter "IGNORE_CASE".
+	-then return the Config struct which includes the new field ignore_case.

@@ -2,7 +2,7 @@ use std::env;
 use std::fs;
 use std::process;
 use std::error;
-use minigrep_lib::search;
+use minigrep_lib::{search, search_case_in};
 
 fn main(){
 
@@ -24,12 +24,11 @@ fn main(){
 }
 
 fn run(config: Config) -> Result<(), Box<dyn error::Error>>{
-	match fs::read_to_string(config.file_path){
-			Ok(val) => for line in search(&config.query, &val){
-					println!("{line}")
-				   },
-			Err(e) => println!("{e}")
-	};	
+	let contents = fs::read_to_string(config.file_path)?;	
+
+	for line in search(&config.query, &contents){
+		println!("{line}");
+	}
 
 	Ok(())
 }
