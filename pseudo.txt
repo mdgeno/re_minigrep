@@ -58,7 +58,6 @@
 -implement the search case insensitive function.
 	-in order to make this work, lowercase both the query and each line of the contents, then check if each line contains the query.
 
-CONT.
 -implement the ignore case feature
 	-create an ignore case field for the Config struct
 	-refactor the run function where in you create a results variable which is put through a match control flow construct, having the config ignore case field as the expression, when the match arm is true, it performs the search case insensitive funciton. Otherwise, it executes the case sensitive search function.
@@ -66,3 +65,5 @@ CONT.
 	
 	-refactor the build function in the implementation block of the Config struct, by adding a variable for the ignore case field. The value should be a boolean extracted via the is_ok function, which takes the return value of var function of the env module with the parameter "IGNORE_CASE".
 	-then return the Config struct which includes the new field ignore_case.
+
+CONT. Redirecting Errors to Standard Error

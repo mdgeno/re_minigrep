@@ -25,8 +25,12 @@ fn main(){
 
 fn run(config: Config) -> Result<(), Box<dyn error::Error>>{
 	let contents = fs::read_to_string(config.file_path)?;	
+	let results = match config.ignore_case {
+			true => search_case_in(&config.query, &contents),
+			false => search(&config.query, &contents)
+		      };
 
-	for line in search(&config.query, &contents){
+	for line in results{
 		println!("{line}");
 	}
 
@@ -35,7 +39,8 @@ fn run(config: Config) -> Result<(), Box<dyn error::Error>>{
 
 struct Config{
 	query: String,
-	file_path: String
+	file_path: String,
+	ignore_case: bool
 }
 
 impl Config{
@@ -46,8 +51,9 @@ impl Config{
 
 		let query = args[1].clone();
 		let file_path = args[2].clone();
+		let ignore_case = env::var("IGNORE_CASE").is_ok();	
 
-		Ok(Config{ query: query, file_path: file_path}) 
+		Ok(Config{ query: query, file_path: file_path, ignore_case: ignore_case}) 
 	}
 }
 
