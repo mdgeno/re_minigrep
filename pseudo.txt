@@ -66,4 +66,6 @@
 	-refactor the build function in the implementation block of the Config struct, by adding a variable for the ignore case field. The value should be a boolean extracted via the is_ok function, which takes the return value of var function of the env module with the parameter "IGNORE_CASE".
 	-then return the Config struct which includes the new field ignore_case.
 
-CONT. Redirecting Errors to Standard Error
+-refactor the root file of the binary crate so when executing the standard output stream to a file via the > syntax, the standard error stream output would remain on screen and not be redirected to the file(by using eprintln!).
+
+CONT. Improving our I/O Project

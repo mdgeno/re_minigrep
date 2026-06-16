@@ -10,7 +10,7 @@ fn main(){
 
 	let config_args = match Config::build(&arguments){
 				Ok(val) => val,
-				Err(e) => {println!("Problem parsing arguments: {e}");
+				Err(e) => {eprintln!("Problem parsing arguments: {e}");
 					  process::exit(1);}
 			  };
 
@@ -19,7 +19,7 @@ fn main(){
 
 	match run(config_args){
 		Ok(val) => val,
-		Err(e) => println!("{e}")   
+		Err(e) => eprintln!("{e}")   
 	};
 }
 
