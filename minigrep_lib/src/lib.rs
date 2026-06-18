@@ -1,26 +1,9 @@
-pub fn search<'a>(query: &str, contents: &'a str) -> Vec<&'a str>{
-	let mut vec_lines = Vec::new();
-
-	for line in contents.lines(){
-		if line.contains(query) {
-			vec_lines.push(line);
-		}
-	}
-
-	vec_lines
+pub fn search<'a>(query: &str, contents: &'a str) -> impl Iterator<Item = &'a str>{
+	contents.lines().filter(move |x| x.contains(query))
 }
 
 pub fn search_case_in<'a>(query: &str, contents: &'a str) -> Vec<&'a str>{
-	let mut vec_lines = Vec::new();
-	let query = query.to_lowercase();
-	
-	for line in contents.lines(){
-		if line.to_lowercase().contains(&query) {
-			vec_lines.push(line);
-		}
-	}
-
-	vec_lines
+	contents.lines().filter(move |x| x.to_lowercase().contains(&query.to_lowercase())).collect()
 }
 
 #[cfg(test)]
@@ -47,7 +30,7 @@ safe, fast, productive.
 Pick three.
 Duct tape.";
 	
-		assert_eq!(vec!["safe, fast, productive."], search(query, contents));
+		assert_eq!(Some("safe, fast, productive."), search(query, contents).next());
 	}
 
 	#[test]
