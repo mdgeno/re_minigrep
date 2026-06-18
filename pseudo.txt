@@ -68,4 +68,9 @@
 
 -refactor the root file of the binary crate so when executing the standard output stream to a file via the > syntax, the standard error stream output would remain on screen and not be redirected to the file(by using eprintln!).
 
-CONT. Improving our I/O Project
+-take advantage of the iterator, to improve the readability of the source code.
+	-take the args value as an Iterator.
+	-refactor the build function of the Config struct so that it takes an Iterator type that returns a String.
+	-apply the same concept with the search functions in the library crate, and refactor the tests accordingly.
+
+CONT. Customizing Builds with Release Profiles

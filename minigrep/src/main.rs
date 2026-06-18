@@ -6,9 +6,9 @@ use minigrep_lib::{search, search_case_in};
 
 fn main(){
 
-	let arguments: Vec<String> = env::args().collect();
+	//let arguments: Vec<String> = env::args().collect();
 
-	let config_args = match Config::build(&arguments){
+	let config_args = match Config::build(env::args()){
 				Ok(val) => val,
 				Err(e) => {eprintln!("Problem parsing arguments: {e}");
 					  process::exit(1);}
@@ -44,13 +44,19 @@ struct Config{
 }
 
 impl Config{
-	fn build(args: &[String]) -> Result<Config, &/*'static*/ str>{  //testing the lifetimes
-		if args.len()<3{
-			return Err("not enough arguments")
-		}
+	fn build(mut args: impl Iterator<Item = String>) -> Result<Config, &'static str>{ 
+		args.next();
 
-		let query = args[1].clone();
-		let file_path = args[2].clone();
+		let query = match args.next(){
+				Some(val) => val,
+				None => return Err("Didn't get a query string")
+			   };	
+
+		let file_path = match args.next(){
+				Some(val) => val,
+				None => return Err("Didn't get a file path")
+			   };
+
 		let ignore_case = env::var("IGNORE_CASE").is_ok();	
 
 		Ok(Config{ query: query, file_path: file_path, ignore_case: ignore_case}) 
