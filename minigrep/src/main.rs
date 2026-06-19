@@ -28,7 +28,7 @@ fn run(config: Config) -> Result<(), Box<dyn error::Error>>{
 	let results = match config.ignore_case {
 			true => search_case_in(&config.query, &contents),
 			false => search(&config.query, &contents)
-		      };
+		     };
 
 	for line in results{
 		println!("{line}");
