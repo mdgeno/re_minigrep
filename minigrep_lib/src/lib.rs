@@ -1,5 +1,5 @@
-pub fn search<'a>(query: &str, contents: &'a str) -> impl Iterator<Item = &'a str>{
-	contents.lines().filter(move |x| x.contains(query))
+pub fn search<'a>(query: &str, contents: &'a str) -> Vec<&'a str>{
+	contents.lines().filter(move |x| x.contains(query)).collect()
 }
 
 pub fn search_case_in<'a>(query: &str, contents: &'a str) -> Vec<&'a str>{
@@ -30,7 +30,7 @@ safe, fast, productive.
 Pick three.
 Duct tape.";
 	
-		assert_eq!(Some("safe, fast, productive."), search(query, contents).next());
+		assert_eq!(vec!["safe, fast, productive."], search(query, contents));
 	}
 
 	#[test]
@@ -42,6 +42,5 @@ safe, fast, productive.
 Pick three.
 Trust me.";
 
-		assert_eq!(vec!["Rust:", "Trust me."], search_case_in(query, contents));
-	}
+		assert_eq!(vec!["Rust:", "Trust me."], search_case_in(query, contents));  			}
 }
