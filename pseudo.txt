@@ -19,6 +19,7 @@
 -transfer the parse_config function into the implementation block, and change it's name to new.
 -run and make it sure it outputs the same results as previous.
 
+CONT. Try to document following chapter 14.2
 -add a functionality to the new function of the Config Struct where it checks weather the argument(which is the parameter) has a length of atleast 3(0-path, 1-query, 2-file_path), then display a message via panic macro 'not enough arguments'. this way, users will understand when there has been an error in the input of the command line.
 -check if the result is similar to the ex after listing 12-8
 
@@ -73,4 +74,4 @@
 	-refactor the build function of the Config struct so that it takes an Iterator type that returns a String.
 	-apply the same concept with the search functions in the library crate, and refactor the tests accordingly.
 
-CONT. Customizing Builds with Release Profiles
+CONT. with placing documentation comment on both binary and library crates, follow 14.2 from the book.
