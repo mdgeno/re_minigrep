@@ -37,13 +37,30 @@ fn run(config: Config) -> Result<(), Box<dyn error::Error>>{
 	Ok(())
 }
 
+///Test documentation comment
+///
+///# Some Header example
+///
+///```
+///some example notes 
+///
+///```
 struct Config{
 	query: String,
 	file_path: String,
 	ignore_case: bool
-}
+} 
 
 impl Config{
+
+///Test documentation comment
+///
+///# Some Header example
+///
+///```
+///some example notes 
+///
+///```
 	fn build(mut args: impl Iterator<Item = String>) -> Result<Config, &'static str>{ 
 		args.next();
 
