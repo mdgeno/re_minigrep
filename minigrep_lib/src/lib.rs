@@ -1,3 +1,8 @@
+//!# Minigrep Library (testing title header)
+//!
+//! `minigrep_lib` is the library crate. 
+//! testing definition
+
 pub fn search<'a>(query: &str, contents: &'a str) -> Vec<&'a str>{
 	contents.lines().filter(move |x| x.contains(query)).collect()
 }
