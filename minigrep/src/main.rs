@@ -1,8 +1,18 @@
+//!# Minigrep Binary Crate
+//!
+//! `minigrep` is the binary crate of the `re_minigrep` project. Contains the main function
+//! where arguments from the cli is taken, and executed via the run function. The crate also
+//! contains the `Config` struct which organizes the required arguments in order to extract 
+//! the user's desired output.
+
 use std::env;
 use std::fs;
 use std::process;
 use std::error;
 use minigrep_lib::{search, search_case_in};
+
+/// the main function where arguments from the cli is extracted, and organised via the
+/// `Config` Sruct, and executed via the `run` function. 
 
 fn main(){
 
@@ -23,6 +33,15 @@ fn main(){
 	};
 }
 
+/// The `run` function takes a `Config` Struct as parameter, reads the file path address,
+/// recognises the boolean value of the desired search case, then prints the output  
+/// accordingly. 
+///
+///# Header example
+///```
+/// some example notes 
+///
+///```
 fn run(config: Config) -> Result<(), Box<dyn error::Error>>{
 	let contents = fs::read_to_string(config.file_path)?;	
 	let results = match config.ignore_case {
@@ -37,14 +56,23 @@ fn run(config: Config) -> Result<(), Box<dyn error::Error>>{
 	Ok(())
 }
 
-///Test documentation comment
+/// Has the ability to contain and organise the required query, file path, and required 
+/// search case setting of the user.
 ///
-///# Some Header example
+/// # Some Header example
+/// Definition notes.
+/// ```
+/// some example notes 
+/// ```
+/// Definition notes
 ///
-///```
-///some example notes 
+/// # Another Header example (if neccessary)
 ///
-///```
+/// ```
+/// some example notes 
+///
+/// ```
+
 struct Config{
 	query: String,
 	file_path: String,
@@ -53,14 +81,14 @@ struct Config{
 
 impl Config{
 
-///Test documentation comment
+/// Builds a new `Config` Struct value
 ///
-///# Some Header example
+/// # Some Header example
 ///
-///```
-///some example notes 
+/// ```
+/// some example notes 
 ///
-///```
+/// ```
 	fn build(mut args: impl Iterator<Item = String>) -> Result<Config, &'static str>{ 
 		args.next();
 
