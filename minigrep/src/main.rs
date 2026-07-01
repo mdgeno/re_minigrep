@@ -72,7 +72,6 @@ fn run(config: Config) -> Result<(), Box<dyn error::Error>>{
 /// some example notes 
 ///
 /// ```
-
 struct Config{
 	query: String,
 	file_path: String,
