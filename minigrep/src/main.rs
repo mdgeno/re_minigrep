@@ -13,7 +13,6 @@ use minigrep_lib::{search, search_case_in};
 
 /// the main function where arguments from the cli is extracted, and organised via the
 /// `Config` Sruct, and executed via the `run` function. 
-
 fn main(){
 
 	//let arguments: Vec<String> = env::args().collect();
